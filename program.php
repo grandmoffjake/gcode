@@ -4,6 +4,7 @@
 	
 	header( "Content-type: application/json" );
 	
+	$saved = false;
 	$autoindex = isset( $_REQUEST['program_autoindex'] ) ? true : false;
 	try {
 		$program = new GProgram( 
@@ -52,11 +53,12 @@
 				$filename .= ".gcode";
 			
 			file_put_contents( "data/{$filename}", serialize( $program ) );
+			$saved = true;
 		}
 		
 		$program->validate();
 	} catch ( Exception $e ) {
-		echo json_encode( array( "result" => "fail", "reason" => $e->getMessage(), "filename" => $filename ) );
+		echo json_encode( array( "result" => "fail", "reason" => $e->getMessage(), "filename" => $filename, "saved" => $saved ) );
 		exit(1);
 	}
 	

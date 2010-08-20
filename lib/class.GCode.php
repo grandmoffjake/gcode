@@ -89,7 +89,7 @@ class GCode {
 			case "W":
 				$value = intval( $value );
 				if ( $value < 1 || $value > 255 )
-					throw new Exception( "Value for {$name} out of range.  Must be between 1 and 255" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between 1 and 255 for code G{$this->G}" );
 				break;
 			case "X":
 			case "Y":
@@ -99,40 +99,40 @@ class GCode {
 			case "R":
 				$value = floatval( $value );
 				if ( $value < -9999.99 || $value > 9999.99 )
-					throw new Exception( "Value for {$name} out of range.  Must be between -9999.99 and 9999.99" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between -9999.99 and 9999.99 for code G{$this->G}" );
 				break;
 			case "C":
 			case "A":
 			case "B":
 				$value = floatval( $value );
 				if ( $value < -360 || $value > 360 )
-					throw new Exception( "Value for {$name} out of range.  Must be between -360.00 and 360.00" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between -360.00 and 360.00 for code G{$this->G}" );
 				break;
 			case "P":
 			case "D":
 				$value = floatval( $value );
 				if ( $value < -300 || $value > 300 )
-					throw new Exception( "Value for {$name} out of range.  Must be between -300.00 and 300.00" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between -300.00 and 300.00 for code G{$this->G}" );
 				break;
 			case "S":
 				$value = intval( $value );
 				if ( $value < 1 || $value > 10 )
-					throw new Exception( "Value for {$name} out of range.  Must be between 1 and 10" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between 1 and 10 for code G{$this->G}" );
 				break;
 			case "T":
 				$value = intval( $value );
 				if ( $value < 1 || $value > 24 )
-					throw new Exception( "Value for {$name} out of range.  Must be between 1 and 24" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between 1 and 24 for code G{$this->G}" );
 				break;
 			case "F":
 				$value = intval( $value );
 				if ( $value < 1 || $value > 40 )
-					throw new Exception( "Value for {$name} out of range.  Must be between 1 and 40" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be between 1 and 40 for code G{$this->G}" );
 				break;
 			case "M":
 				$value = intval( $value );
 				if ( $value < 0 || $value > 2 )
-					throw new Exception( "Value for {$name} out of range.  Must be 0, 1, or 2" );
+					throw new Exception( "Block {$this->num}: Value for {$name} out of range.  Must be 0, 1, or 2 for code G{$this->G}" );
 				break;
 		}
 		
@@ -250,7 +250,7 @@ class GCode {
 		}
 		foreach( $this->validProperties as $p ) {
 			if ( is_null( $this->$p ) ) {
-				throw new Exception( "Block {$this->num}: property $p not set for code G{$this->code}" );
+				throw new Exception( "Block {$this->num}: property $p not set for code G{$this->G}" );
 			}
 		}
 		

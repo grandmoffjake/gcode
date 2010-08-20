@@ -135,7 +135,7 @@ li:nth-child(2n) td {
 						$data .= "/></td>";
 					}
 					$header .= "<td>&nbsp;</td>";
-					$data .= "<td valign='middle'><button class='delete'>X</button></td>";
+					$data .= "<td valign='middle'><button type='button' class='delete'>X</button></td>";
 					$header .= "</tr></thead>";
 					$data .= "</tr></tbody>";
 		
@@ -237,7 +237,11 @@ li:nth-child(2n) td {
 						
 						$.post( "program.php", data, function(o) {
 							if ( o.result == "fail" ) {
-								alert( "Save successful, but program did not validate:\n"+o.reason );
+								if ( o.saved ) {
+									alert( "Save successful, but program did not validate:\n"+o.reason );
+								} else {
+									alert( "PROGRAM DID NOT SAVE:\n"+o.reason );
+								}
 							}
 							
 							$("#current_program").html( o.filename );
@@ -301,7 +305,7 @@ li:nth-child(2n) td {
 			data += "/></td>";
 		}
 		header += "<td>&nbsp;</td>";
-		data += "<td valign='middle'><button class='delete'>X</button></td>";
+		data += "<td valign='middle'><button type='button' class='delete'>X</button></td>";
 		header += "</tr></thead>";
 		data += "</tr></tbody>";
 		html += header + data + "</table>";
