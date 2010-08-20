@@ -171,13 +171,13 @@ class GCode {
 				if ( ! $this->autoIndex )
 					$valid = array( "X", "Y", "A", "T", "F" );
 				else
-					$valid = array( "X", "Y", "A", "T", "F", "I", "C", "H", "M" );
+					$valid = array( "X", "Y", "A", "I", "C", "H", "M", "T", "F" );
 				break;
 			case "72":
 				if ( ! $this->autoIndex )
 					$valid = array( "X", "Y", "R", "A", "B", "H", "T", "F" );
 				else
-					$valid = array( "X", "Y", "R", "A", "T", "F", "I", "C", "M" );
+					$valid = array( "X", "Y", "R", "A", "I", "C", "M", "T", "F" );
 				break;
 			case "80":
 				$valid = array( "X", "Y", "J", "L", "A", "H", "S", "T", "F" );
@@ -189,20 +189,20 @@ class GCode {
 				if ( ! $this->autoIndex )
 					$valid = array( "X", "Y", "I", "J", "P", "L", "R", "A", "H", "T", "F" );
 				else
-					$valid = array( "X", "Y", "I", "J", "P", "L", "R", "A", "H", "T", "F", "C", "M" );
+					$valid = array( "X", "Y", "I", "J", "P", "L", "R", "A", "H", "C", "M", "T", "F" );
 				break;
 			case "62":
-				$valid = array( "X", "Y", "I", "J", "C", "P", "R", "A", "B", "H", "T", "F", "M" );
+				$valid = array( "X", "Y", "I", "J", "C", "P", "R", "A", "B", "H", "M", "T", "F" );
 				break;
 			case "73":
 			case "74":
 				if ( ! $this->autoIndex )
 					$valid = array( "X", "Y", "I", "J", "H", "K", "T", "F" );
 				else
-					$valid = array( "X", "Y", "I", "J", "C", "A", "H", "K", "T", "F", "M" );
+					$valid = array( "X", "Y", "I", "J", "C", "A", "H", "K", "M", "T", "F" );
 				break;
 			case "50":
-				$valid = array( "X", "Y", "I", "C", "A", "H", "T", "F", "M" );
+				$valid = array( "X", "Y", "I", "C", "A", "H", "M", "T", "F" );
 				break;
 			case "51":
 				$valid = array( "X", "Y", "I", "J", "P", "R", "H", "T", "F" );
@@ -212,14 +212,14 @@ class GCode {
 				if ( ! $this->autoIndex )
 					$valid = array( "X", "Y", "I", "J", "P", "L", "R", "T", "F" );
 				else
-					$valid = array( "X", "Y", "I", "J", "P", "L", "R", "A", "T", "F", "C", "M" );
+					$valid = array( "X", "Y", "I", "J", "P", "L", "R", "A", "C", "M", "T", "F" );
 				break;
 			case "65":
 			case "66":
 				if ( ! $this->autoIndex ) 
 					$valid = array( "X", "Y", "I", "J", "L", "R", "T", "F" );
 				else
-					$valid = array( "X", "Y", "I", "J", "L", "R", "A", "T", "F", "C", "M" );
+					$valid = array( "X", "Y", "I", "J", "L", "R", "A", "C", "M", "T", "F" );
 				break;
 			case "70":
 				$valid = array( "F", "V", "W" );
@@ -288,9 +288,5 @@ class GCode {
 		}
 		
 		return true;
-	}
-	
-	public function toString() {
-		
 	}
 }
